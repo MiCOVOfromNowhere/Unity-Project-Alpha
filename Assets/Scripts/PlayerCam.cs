@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Security.AccessControl;
-using System.Threading.Tasks.Dataflow;
 using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
@@ -26,8 +23,10 @@ public class PlayerCam : MonoBehaviour
 
         yRotation += mouseX;
         xRotation -= mouseY;
-        xRotation = MathF.Clamp(xRotation, -90f, 90f);
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         // rotate camera and orientation
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }  
 }
